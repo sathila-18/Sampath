@@ -577,6 +577,7 @@ button:focus-visible, select:focus-visible {
 .log::after { content: ""; flex: none; height: 104px; }
 
 .app[data-screen="intro"] .log { display: none; }
+.app[data-screen="intro"] #new-chat { display: none; }
 
 /* Date badge — Badge-primary (§8.3) */
 .date-badge {
@@ -975,9 +976,9 @@ button:focus-visible, select:focus-visible {
       <header class="header">
         <h1>AI Assistant</h1>
         <div class="actions">
-          <button class="nav-button" id="history" type="button" aria-label="Conversation history">
-            <!-- Figma icon: clock-rotate-right -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6L12 12L18 12M21.888 10.5C21.164 5.689 17.013 2 12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C16.101 22 19.625 19.532 21.168 16M17 16L21.4 16C21.731 16 22 16.269 22 16.6L22 21"/></svg>
+          <button class="nav-button" id="new-chat" type="button" aria-label="New conversation">
+            <!-- Figma icon: plus -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12H12M18 12H12M12 12V6M12 12V18"/></svg>
           </button>
           <button class="nav-button" id="close" type="button" aria-label="Close assistant">
             <!-- Figma icon: xmark -->
@@ -1869,8 +1870,8 @@ button:focus-visible, select:focus-visible {
   // Wiring
   $('composer').addEventListener('submit', (e) => { e.preventDefault(); submit(input.value); });
   input.addEventListener('input', updateSend);
-  $('close').addEventListener('click', () => load(scenario.id));
-  $('history').addEventListener('click', () => {}); // Not designed (§9)
+  $('new-chat').addEventListener('click', () => load(scenario.id));
+  $('close').addEventListener('click', () => {}); // Not designed yet
 
   $('restart').addEventListener('click', () => load(scenario.id));
   $('fill').addEventListener('click', () => {
